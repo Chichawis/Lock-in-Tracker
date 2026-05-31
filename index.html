@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lock-in Tracker IB</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="auth-locked">
+    <section class="auth-screen" id="authScreen" aria-label="Inicio de sesion">
+      <div class="auth-card">
+        <div class="brand auth-brand">
+          <div class="brand-mark">L</div>
+          <div>
+            <p class="eyebrow">IB command center</p>
+            <h1>Lock-in Tracker</h1>
+          </div>
+        </div>
+        <div class="auth-copy">
+          <p class="eyebrow">Organizacion privada</p>
+          <h2 id="authTitle">Iniciar sesion</h2>
+          <p class="muted">Entra para sincronizar tus tareas, asesorias, recursos y progreso personal con Firebase.</p>
+        </div>
+        <form class="auth-form" id="authGateForm">
+          <div class="field">
+            <label for="gateEmail">Correo</label>
+            <input id="gateEmail" type="email" autocomplete="email" required placeholder="tu-correo@email.com" />
+          </div>
+          <div class="field">
+            <label for="gatePassword">Contrasena</label>
+            <input id="gatePassword" type="password" autocomplete="current-password" required minlength="6" />
+          </div>
+          <div class="auth-message" id="authGateMessage">Usa tu cuenta o crea una nueva con minimo 6 caracteres.</div>
+          <button class="primary-button auth-submit" id="authSubmitButton" type="submit">Iniciar sesion</button>
+          <button class="ghost-button auth-submit" id="googleSignInButton" type="button">Continuar con Google</button>
+          <button class="text-button" id="toggleAuthMode" type="button">Crear cuenta nueva</button>
+        </form>
+      </div>
+    </section>
+
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Navegacion principal">
+        <div class="brand">
+          <div class="brand-mark">L</div>
+          <div>
+            <p class="eyebrow">IB command center</p>
+            <h1>Lock-in Tracker</h1>
+          </div>
+        </div>
+        <nav class="nav-list" id="navList"></nav>
+        <div class="sidebar-footer">
+          <p class="muted" id="syncStatus">Datos locales. Sincronizando al abrir.</p>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <button class="icon-button menu-button" id="menuButton" type="button" aria-label="Abrir navegacion">
+            <span></span><span></span><span></span>
+          </button>
+          <div>
+            <p class="eyebrow" id="currentDate"></p>
+            <h2 id="viewTitle">Dashboard</h2>
+          </div>
+          <div class="topbar-actions">
+            <button class="ghost-button" id="authButton" type="button">Ingresar</button>
+            <button class="ghost-button" id="quickTaskButton" type="button">Nueva tarea</button>
+            <button class="primary-button" id="quickAdvisoryButton" type="button">Nueva asesoria</button>
+          </div>
+        </header>
+
+        <section class="content-view is-active" id="view-dashboard" aria-labelledby="viewTitle"></section>
+        <section class="content-view" id="view-tasks" aria-labelledby="viewTitle"></section>
+        <section class="content-view" id="view-advisories" aria-labelledby="viewTitle"></section>
+        <section class="content-view" id="view-ib" aria-labelledby="viewTitle"></section>
+        <section class="content-view" id="view-personal" aria-labelledby="viewTitle"></section>
+        <section class="content-view" id="view-habits" aria-labelledby="viewTitle"></section>
+        <section class="content-view" id="view-resources" aria-labelledby="viewTitle"></section>
+        <section class="content-view" id="view-settings" aria-labelledby="viewTitle"></section>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow" id="modalKicker"></p>
+            <h3 id="modalTitle"></h3>
+          </div>
+          <button class="icon-button close-button" id="modalClose" type="button" aria-label="Cerrar">×</button>
+        </div>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+
+    <script defer src="https://www.gstatic.com/firebasejs/12.14.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.14.0/firebase-auth-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/12.14.0/firebase-database-compat.js"></script>
+    <script defer src="app.js?v=auth-fix-4"></script>
+  </body>
+</html>
